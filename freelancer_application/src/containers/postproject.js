@@ -110,9 +110,7 @@ class PostProject extends Component {
         let proj_skills =(values.proj_skills).toString();
         let new_values = {...values,
             employer:employerId,
-/*
-            employerName: employerName,
-*/
+            employername: employerName,
             proj_status: proj_status,
             proj_skills: proj_skills,
             budget_currency: "dollar"

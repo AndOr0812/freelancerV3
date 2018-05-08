@@ -255,7 +255,7 @@ export function getAllProjects(callback) {
                     console.log(`User returned is ${data}`)
                     dispatch({
                         type: ALL_OPEN_PROJECTS,
-                        payload: data.projects
+                        payload: data
                     });
                 }
             }

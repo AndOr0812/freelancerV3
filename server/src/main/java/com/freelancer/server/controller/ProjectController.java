@@ -1,5 +1,7 @@
 package com.freelancer.server.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.json.JSONObject;
@@ -42,5 +44,10 @@ public class ProjectController {
 		}
 	}
 	
-	
+	@CrossOrigin
+	@GetMapping("/all")
+	public List<Project> getAllProjects(){
+		System.out.println("Get All project route");
+		return projectRepository.findAllOpenProjects();
+	}
 }

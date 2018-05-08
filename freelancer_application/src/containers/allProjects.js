@@ -37,7 +37,7 @@ class AllProjects extends Component{
                 <td>{proj.proj_name}</td>
                 <td>{proj.proj_desc}</td>
                 <td>{proj.proj_skills}</td>
-                <td><Link to='profile/${proj.employerId}' className="nav-link">{proj.employerName}</Link></td>
+                <td><Link to='profile/${proj.employer}' className="nav-link">{proj.employername}</Link></td>
                 <td>{proj.proj_budget}</td>
             </tr>
         );}.bind(this));

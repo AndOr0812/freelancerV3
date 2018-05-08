@@ -8,6 +8,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,6 +21,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@NamedQuery(name = "Project.findAllOpenProjects",
+query = "SELECT p FROM Project p WHERE p.proj_status = 'open'"
+)
 @Table(name="projects")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value= {"createdAt","updatedAt"},
@@ -41,7 +45,81 @@ public class Project {
 	@NotBlank
 	private String employer;
 	
-    @Column(nullable = false, updatable = false)
+	private String employername;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getProj_name() {
+		return proj_name;
+	}
+
+	public void setProj_name(String proj_name) {
+		this.proj_name = proj_name;
+	}
+
+	public String getProj_desc() {
+		return proj_desc;
+	}
+
+	public void setProj_desc(String proj_desc) {
+		this.proj_desc = proj_desc;
+	}
+
+	public String getProj_skills() {
+		return proj_skills;
+	}
+
+	public void setProj_skills(String proj_skills) {
+		this.proj_skills = proj_skills;
+	}
+
+	public String getBudget_currency() {
+		return budget_currency;
+	}
+
+	public void setBudget_currency(String budget_currency) {
+		this.budget_currency = budget_currency;
+	}
+
+	public String getProj_budget() {
+		return proj_budget;
+	}
+
+	public void setProj_budget(String proj_budget) {
+		this.proj_budget = proj_budget;
+	}
+
+	public String getProj_status() {
+		return proj_status;
+	}
+
+	public void setProj_status(String proj_status) {
+		this.proj_status = proj_status;
+	}
+
+	public String getEmployer() {
+		return employer;
+	}
+
+	public void setEmployer(String employer) {
+		this.employer = employer;
+	}
+
+	public String getEmployername() {
+		return employername;
+	}
+
+	public void setEmployername(String employername) {
+		this.employername = employername;
+	}
+
+	@Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date createdAt;
@@ -51,52 +129,5 @@ public class Project {
     @LastModifiedDate
     private Date updatedAt;
 
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getProj_name() {
-		return proj_name;
-	}
-	public void setProj_name(String proj_name) {
-		this.proj_name = proj_name;
-	}
-	public String getProj_desc() {
-		return proj_desc;
-	}
-	public void setProj_desc(String proj_desc) {
-		this.proj_desc = proj_desc;
-	}
-	public String getproj_skills() {
-		return proj_skills;
-	}
-	public void setproj_skills(String proj_skills) {
-		this.proj_skills = proj_skills;
-	}
-	public String getBudget_currency() {
-		return budget_currency;
-	}
-	public void setBudget_currency(String budget_currency) {
-		this.budget_currency = budget_currency;
-	}
-	public String getproj_budget() {
-		return proj_budget;
-	}
-	public void setproj_budget(String proj_budget) {
-		this.proj_budget = proj_budget;
-	}
-	public String getproj_status() {
-		return proj_status;
-	}
-	public void setproj_status(String proj_status) {
-		this.proj_status = proj_status;
-	}
-	public String getemployer() {
-		return employer;
-	}
-	public void setemployer(String employer) {
-		this.employer = employer;
-	}	
+
 }
