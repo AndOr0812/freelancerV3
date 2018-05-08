@@ -64,7 +64,7 @@ public class ProjectController {
 	
 	@CrossOrigin
 	@GetMapping(path="/{projectid}")
-	public ResponseEntity getProjectDetail(@PathVariable("projectid") Long ProjectId) throws Exception{
+	public ResponseEntity<String> getProjectDetail(@PathVariable("projectid") Long ProjectId) throws Exception{
 		System.out.println("Inside the get project detail route");
 		Optional<Project> project = projectRepository.findById(ProjectId);
 		List<ProjectBidDetails> projectBidDetails= projectDetailRepository.findAllProjectDetails(ProjectId);

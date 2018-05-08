@@ -41,9 +41,10 @@ class PlaceBid extends Component{
     onSubmit(values){
         console.log(values);
         var bid_values = {
-            proj_id: this.props.projectdetails._id,
-            bid_userId: this.props.userprofile._id,
-            bid_userName: this.props.userprofile.name,
+            proj_id: this.props.projectdetails.id,
+            employer: this.props.projectdetails.employer,
+            bid_userid: this.props.userprofile.id,
+            bid_username: this.props.userprofile.name,
             bid_amount: values.bid_amount,
             bid_period: values.bid_period,
             bid_status: 'new'

@@ -190,21 +190,23 @@ export function authenticateUser(values,callback) {
 export function getProjectDetails(projectId,callback) {
     console.log("Inside the get Project Details action creator");
 
-    const request = axios.get(`${ROOT_URL}/project/${projectId}`,{withCredentials:true});
+    const request = axios.get(`${ROOT_URL}/projects/${projectId}`);
 
     return (dispatch) => {
         request.then(
             ({data}) => {
                 console.log("Inside the get project details dispatcher function");
                 console.log(data);
-                callback(data);
-                if (data) {
-                    //getUserProfile(data.user.emailid);
-                    console.log(`User returned is ${data}`);
+                let string_data = JSON.stringify(data);
+                console.log(`User returned is ${string_data}`);
+                if (string_data) {
+                    console.log("While dispatching project detail")
+                    console.log(`User returned is ${string_data}`);
                     dispatch({
                         type: PROJECT_DETAIL,
-                        payload: data.projectdetails
+                        payload: string_data
                     });
+                    callback(string_data);
                 }
             }
         )};

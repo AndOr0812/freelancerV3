@@ -105,7 +105,7 @@ class PostProject extends Component {
     onSubmit(values){
         console.info('values with out modification',values);
         let employerName = this.props.current_user.name;
-        let employerId = this.props.current_user.emailid;
+        let employerId = this.props.current_user.id;
         let proj_status = 'open';
         let proj_skills =(values.proj_skills).toString();
         let new_values = {...values,

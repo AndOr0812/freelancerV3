@@ -35,7 +35,7 @@ class ProjectDetail extends Component{
     }*/
 
     render(){
-        const {projectdetails } = this.props;
+        const {projectdetails} = this.props;
 
         return(<div className="container-fluid">
             <div className="row">
@@ -56,19 +56,19 @@ class ProjectDetail extends Component{
                                 <h4>Project Title:</h4>
                             </div>
                             <div className="col-sm-6 mt-2">
-                                <h5>{projectdetails.proj_name}</h5>
+                                <h5>{projectdetails.project.proj_name}</h5>
                             </div>
                             <div className="col-sm-6 mt-4">
                                 <h4>Project Description:</h4>
                             </div>
                             <div className="col-sm-6 mt-2">
-                                <h5>{projectdetails.proj_desc}</h5>
+                                <h5>{projectdetails.project.proj_desc}</h5>
                             </div>
                             <div className="col-sm-6 mt-4">
                                 <h4>Skills Required:</h4>
                             </div>
                             <div className="col-sm-6 mt-2">
-                                <h5>{projectdetails.proj_skills}</h5>
+                                <h5>{projectdetails.project.proj_skills}</h5>
                             </div>
                             <div className="col-sm-6 mt-4">
                                 <h4>Files:</h4>
@@ -80,7 +80,7 @@ class ProjectDetail extends Component{
                                 <h4>Budget Range:</h4>
                             </div>
                             <div className="col-sm-6 mt-2">
-                                <h5><span>$</span>{projectdetails.proj_budget}</h5>
+                                <h5><span>$</span>{projectdetails.project.proj_budget}</h5>
                             </div>
                         </div>
                     </div>
@@ -91,8 +91,16 @@ class ProjectDetail extends Component{
                                 <h4>No of Bids:</h4>
                             </div>
                             <div className="col-sm-6 mt-4">
-                                <h5>0</h5>
+                                <h5>{projectdetails.average_bid.total_bids}</h5>
                             </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-6 mt-4">
+                            <h4>Average Bid:</h4>
+                        </div>
+                        <div className="col-sm-6 mt-4">
+                            <h5>{projectdetails.average_bid.average_bid}</h5>
+                        </div>
                     </div>
                 <button type="button" className="btn btn-primary btn-block" onClick={this.handleBidClick}>Bid Now</button>
                 </div>
@@ -102,9 +110,11 @@ class ProjectDetail extends Component{
 }
 
 const mapStateToProps=(state,ownProps)=>{
+    console.log(state.projectDetails);
+
     return {
         current_user:state.userProfile,
-        projectdetails: state.projectDetails,
+        projectdetails: JSON.parse(state.projectDetails),
         project_id:ownProps.match.params.id
     }
 };

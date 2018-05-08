@@ -33,7 +33,7 @@ class AllProjects extends Component{
     }
     openProjects = this.props.allOpenProjects.map(function(proj) {
         return (
-            <tr key={proj._id} onClick={()=>this.handleClick(proj._id)}>
+            <tr key={proj.id} onClick={()=>this.handleClick(proj.id)}>
                 <td>{proj.proj_name}</td>
                 <td>{proj.proj_desc}</td>
                 <td>{proj.proj_skills}</td>
