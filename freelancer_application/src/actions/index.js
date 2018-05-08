@@ -242,7 +242,7 @@ export function placeBid(bidValues,callback) {
 export function getAllProjects(callback) {
     console.log("Inside the getAll Projects action creator");
 
-    const request = axios.get(`${ROOT_URL}/projects/all`,{withCredentials:true});
+    const request = axios.get(`${ROOT_URL}/projects/all`);
 
     return (dispatch) => {
         request.then(
@@ -308,7 +308,7 @@ export function postProject(values,callback) {
     body.set('proj_desc',values.proj_desc);
     body.set('proj_budget',values.proj_budget);
     body.set('proj_skills',values.proj_skills);
-    body.set('proj_status',values.proj_status);
+        body.set('proj_status',values.proj_status);
     body.set('employerId',values.employerId);
     body.set('employerName',values.employerName);
     //body.set('files',values.files);
@@ -329,15 +329,14 @@ export function postProject(values,callback) {
     console.log("raw values is ");
     console.info(values);
 
-    const request =fetch(`${ROOT_URL}/projects/new`, {
+  /*  const request =fetch(`${ROOT_URL}/projects/new`, {
         method:'POST',
-        body: body,
-        credentials:'include',
-        headers: {
-            'Accept': 'application/json, application/xml, text/plain, text/html, *.*'/*,
-            'Content-Type': 'multipart/form-data'*/
-        },
-    });
+        body: values*/
+/*        headers: {
+            'Accept': 'application/json, application/xml, text/plain, text/html, *.*'/!*,
+            'Content-Type': 'multipart/form-data'*!/
+        },*/
+   /* });*/
     //const payload_response_data;
 /*    const request = axios({
         url : `${ROOT_URL}/projects/new`,
@@ -350,7 +349,7 @@ export function postProject(values,callback) {
             'Content-Type' : `multipart/form-data`,
         }
     });*/
-    //const request = axios.post(`${ROOT_URL}/projects/new`,body);
+    const request = axios.post(`${ROOT_URL}/projects/new`,values);
 
     return (dispatch) => {
         request.then(

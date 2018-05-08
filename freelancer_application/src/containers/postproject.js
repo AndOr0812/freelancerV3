@@ -107,10 +107,15 @@ class PostProject extends Component {
         let employerName = this.props.current_user.name;
         let employerId = this.props.current_user.emailid;
         let proj_status = 'open';
+        let proj_skills =(values.proj_skills).toString();
         let new_values = {...values,
-            employerId:employerId,
+            employer:employerId,
+/*
             employerName: employerName,
-            proj_status: proj_status
+*/
+            proj_status: proj_status,
+            proj_skills: proj_skills,
+            budget_currency: "dollar"
         };
         console.info('newValues',new_values)
         this.props.postProject(new_values, result => {
