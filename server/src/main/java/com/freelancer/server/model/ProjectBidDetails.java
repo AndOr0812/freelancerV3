@@ -22,6 +22,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="bids")
+@NamedQuery(name = "ProjectBidDetails.findAllProjectDetails",
+query = "SELECT b FROM ProjectBidDetails b WHERE b.proj_id = :projectid"
+)
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value= {"createdAt","updatedAt"},
 allowGetters = true)
