@@ -40,15 +40,23 @@ class PlaceBid extends Component{
 
     onSubmit(values){
         console.log(values);
+        console.log("Inside the submit function");
+        console.log(this.props.projectdetails.project.id);
+        console.log("project employer is");
+        console.log(this.props.projectdetails.project.employer);
         var bid_values = {
-            proj_id: this.props.projectdetails.id,
-            employer: this.props.projectdetails.employer,
-            bid_userid: this.props.userprofile.id,
-            bid_username: this.props.userprofile.name,
+            proj_id: this.props.projectdetails.project.id,
+            employer: this.props.projectdetails.project.employer,
+            employername: this.props.projectdetails.project.employername,
+            bid_userid: this.props.current_user.id,
+            bid_username: this.props.current_user.name,
             bid_amount: values.bid_amount,
             bid_period: values.bid_period,
             bid_status: 'new'
         };
+
+        console.log("bid values being submittes is");
+        console.log(bid_values);
         this.props.placeBid(bid_values,(result_bid)=>{
             console.log('return from the callback');
             console.log(result_bid);
@@ -144,10 +152,15 @@ function validate(values) {
 }
 
 const mapStateToProps=(state)=>{
+    console.log("project details state in te place bid page");
+    console.log(state.projectDetails);
+
+    console.log("profile details state in te place bid page");
+    console.log(state.profileDetails);
     return {
         current_user:state.userProfile,
         userprofile:state.profileDetails,
-        projectdetails: state.projectDetails,
+        projectdetails: JSON.parse(state.projectDetails),
     }
 };
 export default withRouter(connect(mapStateToProps,{placeBid})(

@@ -33,26 +33,29 @@ public class ProjectBidDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	
 	private Long proj_id;
 	
-	@NotBlank
+	
 	private Long bid_userid;
 	
-	@NotBlank
+	
 	private String bid_username;
 	
-	@NotBlank
+	
 	private float bid_amount;
 	
-	@NotBlank
+	
 	private int bid_period;
 	
-	@NotBlank
+	
 	private String bid_status;
 	
-	@NotBlank
+	
 	private Long employer;
+	
+	
+	private String employername;
 	
 	@Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -127,4 +130,13 @@ public class ProjectBidDetails {
 	public void setEmployer(Long employer) {
 		this.employer = employer;
 	}
+
+	public String getEmployername() {
+		return employername;
+	}
+
+	public void setEmployername(String employername) {
+		this.employername = employername;
+	}
+	
 }

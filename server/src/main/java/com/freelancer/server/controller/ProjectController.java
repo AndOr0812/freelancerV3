@@ -71,4 +71,11 @@ public class ProjectController {
 		AggregateResults average_bid = projectDetailRepository.findAverageBybid_amount(ProjectId);		
 		return new ResponseEntity( new projectData( project, projectBidDetails,average_bid ), HttpStatus.OK );
 	}
+	
+	@CrossOrigin
+	@PostMapping(path="/placebid")
+	public ProjectBidDetails placeBid(@RequestBody ProjectBidDetails newbid) {
+		System.out.println("Inside the place a bid Route");
+		return projectDetailRepository.save(newbid);
+	}
 }

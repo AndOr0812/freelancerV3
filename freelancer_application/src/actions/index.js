@@ -217,8 +217,9 @@ export function getProjectDetails(projectId,callback) {
 
 export function placeBid(bidValues,callback) {
     console.log("Inside the place a bid action creator");
-    console.log(`bid Values is ${bidValues}`);
-    const request = axios.post(`${ROOT_URL}/project/placebid`,bidValues,{withCredentials:true});
+    console.info(`bid Values is ${bidValues}`);
+    console.log(JSON.stringify(bidValues));
+    const request = axios.post(`${ROOT_URL}/projects/placebid`,bidValues);
 
     return (dispatch) => {
         request.then(
@@ -229,10 +230,10 @@ export function placeBid(bidValues,callback) {
                 if (data) {
                     //getUserProfile(data.user.emailid);
                     console.log(`User returned is ${data}`);
-                    dispatch({
+                   /* dispatch({
                         type: PROJECT_DETAIL,
                         payload: data.projectdetails
-                    });
+                    });*/
                 }
             }
         )};
