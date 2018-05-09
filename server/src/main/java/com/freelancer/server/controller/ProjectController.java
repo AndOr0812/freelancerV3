@@ -78,4 +78,12 @@ public class ProjectController {
 		System.out.println("Inside the place a bid Route");
 		return projectDetailRepository.save(newbid);
 	}
+	
+	@CrossOrigin
+	@GetMapping(path="/mybids/{bid_userid}")
+	public List<ProjectBidDetails> getMyBids(@PathVariable("bid_userid") Long bid_userid) throws Exception{
+		System.out.println("Inside the get my bids route");
+		List<ProjectBidDetails> myBids = projectDetailRepository.findMyBids(bid_userid);
+		return myBids;
+	}
 }

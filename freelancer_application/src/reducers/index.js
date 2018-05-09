@@ -5,7 +5,7 @@ import profileDetailsReducer from './profiledetailreducer';
 import allOpenProjects from './allOpenProjects';
 import relevantProjects from './relevantProjects';
 import projectDetails from './projectDetailsReducer';
-
+import myBids from './myBids';
 import {reducer as formReducer} from 'redux-form';
 const rootReducer = combineReducers({
     userProfile : userProfileReducer,
@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
     allOpenProjects:allOpenProjects,
     projectDetails: projectDetails,
     relevantProjects: relevantProjects,
+    myBids: myBids,
     form : formReducer
 });
 

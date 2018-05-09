@@ -13,6 +13,8 @@ export const USER_PROFILE_UPDATE = 'profile_update';
 
 export const GET_PROFILE_DETAILS = 'get_profile_details';
 
+export  const MY_BIDS = 'my_bids';
+
 export const POST_PROJECT = 'post_project';
 
 export const ALL_OPEN_PROJECTS = 'all_open_projects';
@@ -212,6 +214,33 @@ export function getProjectDetails(projectId,callback) {
         )};
 }
 
+
+//Action creator to fetch the project details
+
+export function getMyBids(bid_userid,callback) {
+    console.log("Inside the get Project Details action creator");
+
+    const request = axios.get(`${ROOT_URL}/projects/mybids/${bid_userid}`);
+
+    return (dispatch) => {
+        request.then(
+            ({data}) => {
+                console.log("Inside the get my bids list dispatcher function");
+                console.log(data);
+                let string_data = JSON.stringify(data);
+                console.log(`User returned is ${string_data}`);
+                callback(data);
+                if (data) {
+                    console.log("While dispatching project detail")
+                    console.log(`User returned is ${string_data}`);
+                    dispatch({
+                        type: MY_BIDS,
+                        payload: data
+                    });
+                }
+            }
+        )};
+}
 
 //Action creator to place a bid for the project
 

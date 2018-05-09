@@ -21,6 +21,7 @@ import RelevantProjects from "./containers/relevantProjects";
 import ProjectDetail from "./containers/projectDetail";
 import PlaceBid from "./containers/placeBid";
 import Transactions from "./components/transactions";
+import Dashboard from "./containers/Dashboard";
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
@@ -30,7 +31,6 @@ ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
           <Switch>
-              {console.log(store.getState())};
               <Route path="/profile" component={Profile}/>
               <Route path="/editprofile" component={EditProfile}/>
               <Route path="/post_project" component={PostProject}/>
@@ -44,6 +44,7 @@ ReactDOM.render(
               <Route path="/login" component={Login}/>
               <Route path="/home" component={Home}/>
               <Route path="/" component={App}/>
+              <Route path="/dashboard" component={Dashboard}/>
           </Switch>
       </BrowserRouter>
   </Provider>
