@@ -41,6 +41,7 @@ public class ProjectController {
 		return "This is the project main route";
 	}
 	
+	//API for posting a new project
 	@CrossOrigin
 	@PostMapping("/new")
 	public Project addProject(@RequestBody Project project) {
@@ -55,6 +56,7 @@ public class ProjectController {
 		}
 	}
 	
+	//API for fetching the List of all Open Projects
 	@CrossOrigin
 	@GetMapping("/all")
 	public List<Project> getAllProjects(){
@@ -62,6 +64,7 @@ public class ProjectController {
 		return projectRepository.findAllOpenProjects();
 	}
 	
+	//API for fetching the details of a project
 	@CrossOrigin
 	@GetMapping(path="/{projectid}")
 	public ResponseEntity<String> getProjectDetail(@PathVariable("projectid") Long ProjectId) throws Exception{
@@ -72,6 +75,7 @@ public class ProjectController {
 		return new ResponseEntity( new projectData( project, projectBidDetails,average_bid ), HttpStatus.OK );
 	}
 	
+	//API for place a new bid for a project
 	@CrossOrigin
 	@PostMapping(path="/placebid")
 	public ProjectBidDetails placeBid(@RequestBody ProjectBidDetails newbid) {
@@ -79,6 +83,7 @@ public class ProjectController {
 		return projectDetailRepository.save(newbid);
 	}
 	
+	//API for fetching the list of all bids placed by a Freelancer
 	@CrossOrigin
 	@GetMapping(path="/mybids/{bid_userid}")
 	public List<ProjectBidDetails> getMyBids(@PathVariable("bid_userid") Long bid_userid) throws Exception{
@@ -86,4 +91,15 @@ public class ProjectController {
 		List<ProjectBidDetails> myBids = projectDetailRepository.findMyBids(bid_userid);
 		return myBids;
 	}
+	
+	
+	//API for fetching the list of all projects posted by an employer
+	@CrossOrigin
+	@GetMapping(path="/myprojects/{employer}")
+	public List<ProjectBidDetails> getMyProjects(@PathVariable("employer") Long employer) throws Exception{
+		System.out.println("Inside the get my bids route");
+		List<ProjectBidDetails> myProjects = projectDetailRepository.findMyProjects(employer);
+		return myProjects;
+	}
+	
 }

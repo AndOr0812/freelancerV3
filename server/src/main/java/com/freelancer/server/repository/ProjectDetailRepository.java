@@ -19,4 +19,7 @@ public interface ProjectDetailRepository  extends JpaRepository<ProjectBidDetail
 
 	@Query("SELECT t from ProjectBidDetails t where t.bid_userid=:bid_userid")
 	public List<ProjectBidDetails> findMyBids(@Param("bid_userid") Long bid_userid);
+	
+	@Query("SELECT t from ProjectBidDetails t where t.employer=:employer")
+	public List<ProjectBidDetails> findMyProjects(@Param("employer") Long bid_userid);
 }
